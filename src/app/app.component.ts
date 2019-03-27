@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-root",
@@ -7,7 +8,7 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
   componentTitle = "I am a component from a component.ts";
-
+  constructor(private route: ActivatedRoute) {}
   clickHandler() {
     alert("I am clicked");
   }
