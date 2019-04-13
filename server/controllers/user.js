@@ -72,7 +72,7 @@ exports.register = function (req, res) {
   if (!password || !email) {
     return res.status(422).send({
       errors: [{
-        title: "Data missing!",
+        title: "Data missings!",
         detail: "Provide email or password!"
       }]
     });

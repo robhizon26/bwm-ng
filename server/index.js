@@ -13,7 +13,7 @@ moongose.connect(uri, {
   useNewUrlParser: true
 }).then(() => {
   const fakeDb = new FakeDb();
-  fakeDb.seedDb();
+    // fakeDb.seedDb();
 });
 
 const MongoClient = require("mongodb").MongoClient;
