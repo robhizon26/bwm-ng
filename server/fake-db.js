@@ -3,12 +3,14 @@ const User = require("./models/user");
 
 class Fakedb {
   constructor() {
-    this.rentals = [{
+    this.rentals = [
+      {
         title: "Nice view on ocean",
         city: "San Francisco",
         street: "Main street",
         category: "condo",
-        image: "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
+        image:
+          "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
         bedrooms: 4,
         shared: true,
         description: "Very nice apartment in center of the city.",
@@ -19,7 +21,8 @@ class Fakedb {
         city: "New York",
         street: "Time Square",
         category: "apartment",
-        image: "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
+        image:
+          "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
         bedrooms: 1,
         shared: false,
         description: "Very nice apartment in center of the city.",
@@ -31,7 +34,8 @@ class Fakedb {
         street: "Banicka 1",
         category: "house",
         shared: true,
-        image: "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
+        image:
+          "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
         bedrooms: 5,
         shared: true,
         description: "Very nice apartment in center of the city.",
@@ -39,11 +43,18 @@ class Fakedb {
       }
     ];
 
-    this.users = [{
-      username: "Test User",
-      email: "test@gmail.com",
-      password: "testtest"
-    }]
+    this.users = [
+      {
+        username: "Test User",
+        email: "test@gmail.com",
+        password: "testtest"
+      },
+      {
+        username: "Test User1",
+        email: "test1@gmail.com",
+        password: "testtest"
+      }
+    ];
   }
 
   async cleanDB() {
@@ -51,16 +62,18 @@ class Fakedb {
     await Rental.deleteMany();
   }
   pushDataToDb() {
-    const user = new User(this.users[0])
+    const user = new User(this.users[0]);
+    const user2 = new User(this.users[1]);
 
     this.rentals.forEach(rental => {
       const newRental = new Rental(rental);
-      newRental.user = user
-      user.rentals.push(newRental)
+      newRental.user = user;
+      user.rentals.push(newRental);
 
       newRental.save();
     });
-    user.save()
+    user.save();
+    user2.save();
   }
 
   async seedDb() {
