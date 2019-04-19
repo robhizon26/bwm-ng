@@ -1,3 +1,4 @@
+import { HelperService } from "./../common/service/helper.service";
 import { AuthGuard } from "./../auth/shared/auth.guard";
 import { MapModule } from "./../common/map/map.module";
 import { UppercasePipe } from "./../common/pipes/uppercase.pipe";
@@ -15,7 +16,9 @@ import { RentalComponent } from "./rental.component";
 import { RentalService } from "./shared/rental.service";
 import { RentalDetailComponent } from "./rental-detail/rental-detail.component";
 import { MapComponent } from "../common/map/map.component";
-import { RentalDetailBookingComponent } from './rental-detail/rental-detail-booking/rental-detail-booking.component';
+import { RentalDetailBookingComponent } from "./rental-detail/rental-detail-booking/rental-detail-booking.component";
+import { FormsModule } from "@angular/forms";
+import { BookingService } from "../booking/shared/booking.service";
 const routes: Routes = [
   {
     path: "rentals",
@@ -46,9 +49,10 @@ const routes: Routes = [
     HttpClientModule,
     NgPipesModule,
     MapModule,
-    Daterangepicker
+    Daterangepicker,
+    FormsModule
   ],
   exports: [],
-  providers: [RentalService]
+  providers: [RentalService, HelperService, BookingService]
 })
 export class RentalModule {}
