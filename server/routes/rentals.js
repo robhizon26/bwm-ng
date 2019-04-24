@@ -90,7 +90,7 @@ router.get("", function(req, res) {
           errors: [
             {
               title: "No Rentals Found!",
-              detail: "`There are no rentals for city ${city}`"
+              detail: `There are no rentals for city ${city}`
             }
           ]
         });
