@@ -14,6 +14,7 @@ import moment = require("moment");
 import { Rental } from "../../shared/rental.model";
 import { ToastsManager } from "ng2-toastr/ng2-toastr";
 import { DaterangePickerComponent } from "ng2-daterangepicker";
+import { AuthService } from "../../../auth/shared/auth.service";
 
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -41,6 +42,7 @@ export class RentalDetailBookingComponent implements OnInit {
     isInvalidDate: this.checkForInvalidDates.bind(this)
   };
   constructor(
+    public auth: AuthService,
     private helper: HelperService,
     private modalService: NgbModal,
     private bookingService: BookingService,
