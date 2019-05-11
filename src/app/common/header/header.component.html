@@ -3,8 +3,8 @@
     class="navbar-brand"
     [routerLink]="['/rentals']"
     routerLinkActive="router-link-active"
-    >BookWithMe</a
-  >
+    >BookWithMe <img src="favicon.ico" />
+  </a>
   <nav class="navbar navbar-light bg-light">
     <div class="form-inline">
       <input
@@ -71,6 +71,12 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" routerLink="/rentals/new">Create Rental</a>
+            <a class="dropdown-item" routerLink="/manage/rentals"
+              >Manage Rentals</a
+            >
+            <a class="dropdown-item" routerLink="/manage/bookings"
+              >Manage Bookings</a
+            >
           </div>
         </div>
 
