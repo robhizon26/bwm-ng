@@ -1,11 +1,11 @@
 const config = require("./config/dev");
-
 const express = require("express");
 const moongose = require("mongoose");
 const bodyParser = require("body-parser");
-
 const uri = config.DB_URI;
 const FakeDb = require("./fake-db");
+const path = require("path");
+
 const rentalRoutes = require("./routes/rentals"),
   userRoutes = require("./routes/users"),
   bookingRoutes = require("./routes/bookings");
@@ -34,6 +34,13 @@ app.use(bodyParser.json());
 app.use("/api/v1/rentals", rentalRoutes);
 app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/bookings", bookingRoutes);
+
+const appPath = path.join(__dirname, "..", "dist");
+app.use(express.static(appPath));
+
+app.get("*", function(req, res) {
+  res.sendFile(path.resolve(appPath, "index.html"));
+});
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, function() {
