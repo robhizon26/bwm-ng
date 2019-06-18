@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --proxy-config proxy.conf.json",
+    "start": "npm run start --prefix server",
+    "start-dev": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
@@ -37,6 +38,7 @@
     "ng2-daterangepicker": "^2.0.12",
     "ng2-toastr": "^4.1.2",
     "ngx-pipes": "^2.4.6",
+    "node-sass": "^4.12.0",
     "rxjs": "^5.5.6",
     "scss": "^0.2.4",
     "zone.js": "^0.8.19"

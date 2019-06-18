@@ -10,7 +10,7 @@ import {
   ViewEncapsulation
 } from "@angular/core";
 import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
-import moment = require("moment");
+import moment from "moment";
 import { Rental } from "../../shared/rental.model";
 import { ToastsManager } from "ng2-toastr/ng2-toastr";
 import { DaterangePickerComponent } from "ng2-daterangepicker";
