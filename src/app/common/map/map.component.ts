@@ -26,6 +26,7 @@ export class MapComponent {
       },
       () => {
         this.isPositionError = true;
+        this.ref.detectChanges();
       }
     );
   };

@@ -1,4 +1,4 @@
-const config = require("./config/dev");
+const config = require("./config");
 const express = require("express");
 const moongose = require("mongoose");
 const bodyParser = require("body-parser");
@@ -15,8 +15,10 @@ moongose
     useNewUrlParser: true
   })
   .then(() => {
-    const fakeDb = new FakeDb();
-    // fakeDb.seedDb();
+    if (process.env.NODE_ENV !== 'production') {
+      const fakeDb = new FakeDb();
+      // fakeDb.seedDb();
+    }
   });
 
 const MongoClient = require("mongodb").MongoClient;
@@ -35,14 +37,16 @@ app.use("/api/v1/rentals", rentalRoutes);
 app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/bookings", bookingRoutes);
 
-const appPath = path.join(__dirname, "..", "dist");
-app.use(express.static(appPath));
+if (process.env.NODE_ENV == 'production') {
+  const appPath = path.join(__dirname, "..", "dist");
+  app.use(express.static(appPath));
 
-app.get("*", function(req, res) {
-  res.sendFile(path.resolve(appPath, "index.html"));
-});
+  app.get("*", function (req, res) {
+    res.sendFile(path.resolve(appPath, "index.html"));
+  });
+}
 
 const PORT = process.env.PORT || 3001;
-app.listen(PORT, function() {
-  console.log("I am running" + PORT);
+app.listen(PORT, function () {
+  console.log("I am running on Port " + PORT);
 });
