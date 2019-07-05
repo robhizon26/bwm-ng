@@ -3,7 +3,7 @@ const {
   normalizedErrors
 } = require('../helpers/mongoose')
 const jwt = require('jsonwebtoken')
-const config = require('../config/dev')
+const config = require('../config')
 
 
 exports.auth = function (req, res) {
@@ -21,8 +21,8 @@ exports.auth = function (req, res) {
   }
 
   User.findOne({
-      email
-    },
+    email
+  },
     function (err, user) {
       if (err) {
         return res
@@ -44,8 +44,8 @@ exports.auth = function (req, res) {
           userId: user.id,
           username: user.username
         }, config.SECRET, {
-          expiresIn: '1h'
-        });
+            expiresIn: '1h'
+          });
         return res.json(token)
 
 
@@ -86,8 +86,8 @@ exports.register = function (req, res) {
     });
   }
   User.findOne({
-      email
-    },
+    email
+  },
     function (err, existingUser) {
       if (err) {
         return res
