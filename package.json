@@ -30,7 +30,7 @@
     "@angular/router": "^5.2.0",
     "@ng-bootstrap/ng-bootstrap": "^2.0.0",
     "@types/jquery": "^3.2.12",
-    "bcrypt": "^3.0.5",
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.18.3",
     "bootstrap": "^4.1.0",
     "core-js": "^2.4.1",
